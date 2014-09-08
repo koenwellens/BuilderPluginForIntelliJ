@@ -1,0 +1,48 @@
+<idea-plugin version="1">
+    <id>be.wellens.koen.builderPlugin</id>
+    <name>Builder Generator</name>
+    <version>1.0</version>
+    <vendor email="koen.wellens@outlook.com" url="http://wellenskoen.wordpress.com">Koen Wellens</vendor>
+
+    <description><![CDATA[
+      This plugin generates the builder pattern for a POJO. Given selected fields, it will generate:
+        <ul>
+        <li>a private constructor for the POJO</li>
+        <li>a static newPOJO method which returns a new Builder</li>
+        <li>a static inner class Builder with:
+        <ul>
+        <li>a field of the type POJO that is initiated when the Builder is created</li>
+        <li>with-methods for each field of the POJO</li>
+        <li>a build method that returns the built POJO instance</li>
+        </ul>
+        </li>
+        </ul>
+    ]]></description>
+
+    <change-notes><![CDATA[
+            Initial commit. All data is tested and working for all fields of the POJOs.
+    ]]>
+    </change-notes>
+
+    <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="131"/>
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="builderGenerator"
+                class="be.wellens.koen.builderPlugin.action.BuilderCreatorAction"
+                text="Generate Builder pattern"
+                description="Creates a builder for the current class">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+    </actions>
+
+</idea-plugin>
